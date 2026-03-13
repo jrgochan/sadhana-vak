@@ -16,6 +16,9 @@ This document is the canonical list of every library used in production. Any new
 | Fonts | **Noto Sans Devanagari** | (Google Fonts CDN or local) | OFL 1.1 | Full Sanskrit Unicode coverage |
 | In-browser AI | **onnxruntime-web** | 1.17+ | MIT | Runs Silero VAD model in WASM |
 | VAD Model | **Silero VAD** | v5 | MIT | 1MB ONNX; <1ms per 32ms chunk |
+| Transliteration | **@indic-transliteration/sanscript** | latest | MIT | IAST ↔ Devanāgarī in browser (Studio) |
+| Animation | **framer-motion** | 11.x | MIT | Studio page transitions and micro-animations |
+| Icons | **lucide-react** | latest | ISC | Studio UI icons |
 | 3D Visuals | **React Three Fiber** | 8.x | MIT | Phase III; mounts Three.js into React |
 | Audio | **Web Audio API + MediaRecorder** | (native browser) | — | No library needed |
 | WebRTC | **native browser RTCPeerConnection** | — | — | Connects to aiortc on backend |
@@ -29,7 +32,7 @@ This document is the canonical list of every library used in production. Any new
 | Web Framework | **FastAPI** | 0.110+ | MIT | Async; auto OpenAPI docs at `/docs` |
 | ASGI Server | **uvicorn** | 0.29+ | BSD | `--reload` for dev |
 | WebRTC | **aiortc** | 1.8+ | BSD | Python WebRTC peer; uses `av` for audio decode |
-| LLM Runtime | **llama-cpp-python** | 0.2.62+ | MIT | Runs GGUF on Metal GPU (`n_gpu_layers=-1`) |
+| LLM Runtime | **Ollama** (Qwen3-14B) | `qwen3:14b` | Apache 2.0 | Runs GGUF via Ollama's OpenAI-compatible API (`/v1`); use `llama-cpp-python` for direct GGUF if preferred |
 | STT | **sherpa-onnx** | latest | Apache 2.0 | Wraps Moonshine-Small or Whisper |
 | TTS | **piper-tts** | latest | MIT | VITS architecture; outputs wav + phoneme timings |
 | Grammar | **CLTK** | 1.x | MIT | Sanskrit morphological analysis (Apache 2.0 fallback) |
@@ -42,7 +45,7 @@ This document is the canonical list of every library used in production. Any new
 
 | Model | File | Size | License | Source |
 |---|---|---|---|---|
-| **Qwen3-14B-Instruct Q4_K_M** | `qwen3-14b-instruct.Q4_K_M.gguf` | ~8 GB | Apache 2.0 | [Hugging Face: Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) |
+| **Qwen3-14B-Instruct Q4_K_M** | (Ollama: `qwen3:14b`) | ~8 GB | Apache 2.0 | [Hugging Face: Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) |
 | **Moonshine-Small** | `moonshine-small/` | ~80 MB | Apache 2.0 | [useful-transformers/moonshine](https://github.com/usefultransformers/moonshine) |
 | **Silero VAD** | `silero_vad.onnx` | ~1 MB | MIT | [snakers4/silero-vad](https://github.com/snakers4/silero-vad) |
 | **VITS Sanskrit** | `vits-sanskrit.onnx` | ~300 MB | MIT (after fine-tune) | Fine-tuned via Piper on IIT-Madras dataset |

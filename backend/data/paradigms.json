@@ -1,0 +1,338 @@
+{
+  "paradigm_templates": {
+    "a_m": {
+      "cases": [
+        {
+          "case": "nominative",
+          "singular": "+ḥ",
+          "dual": "+au",
+          "plural": "+āḥ"
+        },
+        {
+          "case": "accusative",
+          "singular": "+m",
+          "dual": "+au",
+          "plural": "+ān"
+        },
+        {
+          "case": "instrumental",
+          "singular": "+eṇa",
+          "dual": "+ābhyām",
+          "plural": "+aiḥ"
+        },
+        {
+          "case": "dative",
+          "singular": "+āya",
+          "dual": "+ābhyām",
+          "plural": "+ebhyaḥ"
+        },
+        {
+          "case": "ablative",
+          "singular": "+āt",
+          "dual": "+ābhyām",
+          "plural": "+ebhyaḥ"
+        },
+        {
+          "case": "genitive",
+          "singular": "+asya",
+          "dual": "+ayoḥ",
+          "plural": "+ānām"
+        },
+        {
+          "case": "locative",
+          "singular": "+e",
+          "dual": "+ayoḥ",
+          "plural": "+eṣu"
+        },
+        {
+          "case": "vocative",
+          "singular": "+a",
+          "dual": "+au",
+          "plural": "+āḥ"
+        }
+      ]
+    },
+    "a_n": {
+      "cases": [
+        {
+          "case": "nominative",
+          "singular": "+m",
+          "dual": "+e",
+          "plural": "+āni"
+        },
+        {
+          "case": "accusative",
+          "singular": "+m",
+          "dual": "+e",
+          "plural": "+āni"
+        },
+        {
+          "case": "instrumental",
+          "singular": "+eṇa",
+          "dual": "+ābhyām",
+          "plural": "+aiḥ"
+        },
+        {
+          "case": "dative",
+          "singular": "+āya",
+          "dual": "+ābhyām",
+          "plural": "+ebhyaḥ"
+        },
+        {
+          "case": "ablative",
+          "singular": "+āt",
+          "dual": "+ābhyām",
+          "plural": "+ebhyaḥ"
+        },
+        {
+          "case": "genitive",
+          "singular": "+asya",
+          "dual": "+ayoḥ",
+          "plural": "+ānām"
+        },
+        {
+          "case": "locative",
+          "singular": "+e",
+          "dual": "+ayoḥ",
+          "plural": "+eṣu"
+        },
+        {
+          "case": "vocative",
+          "singular": "+a",
+          "dual": "+e",
+          "plural": "+āni"
+        }
+      ]
+    },
+    "i_mf": {
+      "cases": [
+        {
+          "case": "nominative",
+          "singular": "+ḥ",
+          "dual": "+ī",
+          "plural": "+ayaḥ"
+        },
+        {
+          "case": "accusative",
+          "singular": "+m",
+          "dual": "+ī",
+          "plural": "+īn"
+        },
+        {
+          "case": "instrumental",
+          "singular": "+inā",
+          "dual": "+ibhyām",
+          "plural": "+ibhiḥ"
+        },
+        {
+          "case": "dative",
+          "singular": "+aye",
+          "dual": "+ibhyām",
+          "plural": "+ibhyaḥ"
+        },
+        {
+          "case": "ablative",
+          "singular": "+eḥ",
+          "dual": "+ibhyām",
+          "plural": "+ibhyaḥ"
+        },
+        {
+          "case": "genitive",
+          "singular": "+eḥ",
+          "dual": "+yoḥ",
+          "plural": "+īnām"
+        },
+        {
+          "case": "locative",
+          "singular": "+au",
+          "dual": "+yoḥ",
+          "plural": "+iṣu"
+        },
+        {
+          "case": "vocative",
+          "singular": "+e",
+          "dual": "+ī",
+          "plural": "+ayaḥ"
+        }
+      ]
+    },
+    "u_m": {
+      "cases": [
+        {
+          "case": "nominative",
+          "singular": "+ḥ",
+          "dual": "+ū",
+          "plural": "+avaḥ"
+        },
+        {
+          "case": "accusative",
+          "singular": "+m",
+          "dual": "+ū",
+          "plural": "+ūn"
+        },
+        {
+          "case": "instrumental",
+          "singular": "+unā",
+          "dual": "+ubhyām",
+          "plural": "+ubhiḥ"
+        },
+        {
+          "case": "dative",
+          "singular": "+ave",
+          "dual": "+ubhyām",
+          "plural": "+ubhyaḥ"
+        },
+        {
+          "case": "ablative",
+          "singular": "+oḥ",
+          "dual": "+ubhyām",
+          "plural": "+ubhyaḥ"
+        },
+        {
+          "case": "genitive",
+          "singular": "+oḥ",
+          "dual": "+voḥ",
+          "plural": "+ūnām"
+        },
+        {
+          "case": "locative",
+          "singular": "+au",
+          "dual": "+voḥ",
+          "plural": "+uṣu"
+        },
+        {
+          "case": "vocative",
+          "singular": "+o",
+          "dual": "+ū",
+          "plural": "+avaḥ"
+        }
+      ]
+    }
+  },
+  "word_map": {
+    "rama": [
+      "a_m",
+      "masculine"
+    ],
+    "krishna": [
+      "a_m",
+      "masculine"
+    ],
+    "deva": [
+      "a_m",
+      "masculine"
+    ],
+    "nara": [
+      "a_m",
+      "masculine"
+    ],
+    "raja": [
+      "a_m",
+      "masculine"
+    ],
+    "loka": [
+      "a_m",
+      "masculine"
+    ],
+    "yoga": [
+      "a_m",
+      "masculine"
+    ],
+    "dharma": [
+      "a_m",
+      "masculine"
+    ],
+    "karma": [
+      "a_m",
+      "masculine"
+    ],
+    "artha": [
+      "a_m",
+      "masculine"
+    ],
+    "kama": [
+      "a_m",
+      "masculine"
+    ],
+    "vana": [
+      "a_n",
+      "neuter"
+    ],
+    "jala": [
+      "a_n",
+      "neuter"
+    ],
+    "phala": [
+      "a_n",
+      "neuter"
+    ],
+    "satya": [
+      "a_n",
+      "neuter"
+    ],
+    "jnana": [
+      "a_n",
+      "neuter"
+    ],
+    "mantra": [
+      "a_n",
+      "neuter"
+    ],
+    "patra": [
+      "a_n",
+      "neuter"
+    ],
+    "sukha": [
+      "a_n",
+      "neuter"
+    ],
+    "agni": [
+      "i_mf",
+      "masculine"
+    ],
+    "kavi": [
+      "i_mf",
+      "masculine"
+    ],
+    "mati": [
+      "i_mf",
+      "feminine"
+    ],
+    "gati": [
+      "i_mf",
+      "feminine"
+    ],
+    "shakti": [
+      "i_mf",
+      "feminine"
+    ],
+    "shanti": [
+      "i_mf",
+      "feminine"
+    ],
+    "bhakti": [
+      "i_mf",
+      "feminine"
+    ],
+    "buddhi": [
+      "i_mf",
+      "feminine"
+    ],
+    "prakriti": [
+      "i_mf",
+      "feminine"
+    ],
+    "guru": [
+      "u_m",
+      "masculine"
+    ],
+    "vayu": [
+      "u_m",
+      "masculine"
+    ],
+    "vidhu": [
+      "u_m",
+      "masculine"
+    ]
+  }
+}

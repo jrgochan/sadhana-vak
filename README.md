@@ -1,41 +1,118 @@
-# Sadhana-Vak
-**A Real-Time Offline Sanskrit Voice-to-Voice System**
+# Sadhana-Vak — संस्कृत वाक्
 
-Sadhana-Vak is an edge-native experimental application that integrates contemporary Large Language Models with Paninian Formal Logic. It is designed to run 100% offline, targeting Apple Silicon hardware, to provide real-time English-to-Sanskrit speech translation, grammatical validation, and audio sythesis.
+**A real-time, fully-offline English → Sanskrit voice-to-voice AI system.**
 
-## Architecture Documentation
+Sadhana-Vak integrates a large language model (Qwen3-14B), a Pāṇinian formal grammar verifier (CLTK, Apache 2.0), and VITS/Piper Sanskrit TTS — all running locally on Apple Silicon with no internet dependency at runtime.
 
-A comprehensive multi-pass architectural review was conducted during the planning phase. The full specifications and hardware-calibrated roadmap are maintained locally in the `docs/` directory:
+---
 
-- [docs/architecture/sadhana_vak_machine_calibration.md](docs/architecture/sadhana_vak_machine_calibration.md) - The master implementation roadmap, calibrated specifically for M2 Max 96GB hardware.
-- [docs/architecture/sadhana_vak_nextjs_ux_analysis.md](docs/architecture/sadhana_vak_nextjs_ux_analysis.md) - Deep dive into WebRTC audio streaming, in-browser VAD (WebAssembly), and 3D lip-sync synchronization.
-- [docs/architecture/sadhana_vak_hardware_analysis.md](docs/architecture/sadhana_vak_hardware_analysis.md) - Analysis of memory bandwidth constraints, ExecuTorch vs MLC-LLM runtimes, and GPU scaling.
-- [docs/architecture/sadhana_vak_review.md](docs/architecture/sadhana_vak_review.md) - Initial linguistic review covering GPLv3 licensing traps, Paninian verifier heuristics, and Sanskrit STT/TTS models.
+## Quick Start
 
-## Repository Structure
+### Prerequisites
 
-The project is split into a monorepo architecture for rapid prototyping:
+| Requirement | Notes |
+|---|---|
+| macOS 14+ (Apple Silicon) | M2 Max 96GB recommended |
+| Python 3.12 | Required for pre-built `aiortc` ARM64 wheels |
+| Node.js 20+ | For the Next.js frontend |
+| [Ollama](https://ollama.com) | Runs Qwen3-14B locally |
+| Git LFS | For model files (optional) |
 
-- `frontend/`: A Next.js 15 (React) application rendering the UI, capturing mic audio, running Silero VAD strictly in the browser via WebAssembly, and streaming audio bytes to the backend via WebRTC.
-- `backend/`: A Python FastAPI environment acting as the AI orchestrator. Wraps Sherpa-ONNX (STT), Qwen3-14B (LLM), CLTK/sanskrit-parser (Grammar Verifier), and Piper/VITS (TTS).
-- `docs/`: Centralized research and architectural blueprints.
+---
 
-## Setup Instructions (Phase I & II)
+### 1 — Pull the LLM
 
-### 1. Backend (Python API)
-The backend requires `python3.12` to install pre-compiled ARM64 wheel binaries for the `aiortc` library, sidestepping FFmpeg 8 Homebrew compilation issues.
+```bash
+ollama pull qwen3:14b
+```
+
+---
+
+### 2 — Backend setup
 
 ```bash
 cd backend
+
+# Copy and edit environment variables
+cp .env.example .env
+
+# Create Python virtual environment (Python 3.12 required)
 python3.12 -m venv .venv
 source .venv/bin/activate
+
+# Install production dependencies
 pip install -r requirements.txt
+
+# (Optional) Install platform-specific audio/ML deps:
+#   pip install piper-tts          # TTS (requires espeak-ng: brew install espeak-ng)
+#   pip install sherpa-onnx        # STT (Moonshine-Small)
+
+# Seed the dictionary database (only needed once)
+python scripts/build_dictionary_db.py
+
+# Start the API server
 uvicorn main:app --reload
+# → API available at http://localhost:8000
+# → Auto-docs at http://localhost:8000/docs
+# → Health check at http://localhost:8000/health
 ```
 
-### 2. Frontend (Next.js UX)
+---
+
+### 3 — Frontend setup
+
 ```bash
 cd frontend
 npm install
 npm run dev
+# → UI available at http://localhost:3000
 ```
+
+---
+
+## Model Files
+
+Place downloaded models in `backend/models/`:
+
+| Model | File | Source |
+|---|---|---|
+| Moonshine-Small (STT) | `models/moonshine-small/` | [useful-transformers/moonshine](https://github.com/usefultransformers/moonshine) |
+| Sanskrit VITS (TTS) | `models/vits-sanskrit.onnx` (+ `.json`) | Fine-tune via [Piper](https://github.com/rhasspy/piper) on IIT-Madras dataset |
+| Silero VAD | `models/silero_vad.onnx` | [snakers4/silero-vad](https://github.com/snakers4/silero-vad) |
+
+> **Note:** Qwen3-14B runs via Ollama — no GGUF file needed for the default setup.
+
+---
+
+## Features
+
+| Feature | Status | Route |
+|---|---|---|
+| English → Sanskrit translation (voice + text) | ✅ | `/` |
+| Pāṇinian grammar confidence scoring | ✅ | `/` |
+| 3D vocal tract visualization | ⚙️ Phase III | `/` |
+| Alphabet Explorer (50 phonemes, click-to-pronounce) | ✅ | `/alphabet` |
+| Sanskrit Dictionary (93 MW entries, FTS5 search, declension tables) | ✅ | `/dictionary` |
+| Subhāṣita Practice Panel (14 aphorisms, word chips, grammar analysis) | ✅ | `/practice` |
+| IAST Verify Mode (live Devanāgarī preview, grammar check) | ✅ | `/verify` |
+
+---
+
+## Architecture Docs
+
+| Doc | Description |
+|---|---|
+| [01-architectural-review.md](docs/architecture/01-architectural-review.md) | Critical risk review: GPLv3 traps, verifier scope, TTS gaps |
+| [02-hardware-analysis.md](docs/architecture/02-hardware-analysis.md) | M2 Max memory bandwidth analysis |
+| [03-machine-calibrated-roadmap.md](docs/architecture/03-machine-calibrated-roadmap.md) | Hardware-specific implementation roadmap |
+| [04-nextjs-ux-protocol-analysis.md](docs/architecture/04-nextjs-ux-protocol-analysis.md) | WebRTC vs WebSocket, Silero VAD, 3D lip-sync |
+| [05-srs.md](docs/architecture/05-srs.md) | Master Software Requirements Specification |
+| [06-tech-stack.md](docs/architecture/06-tech-stack.md) | Approved technology stack with license matrix |
+| [07-studio-shell.md](docs/architecture/07-studio-shell.md) | Sanskrit Studio Shell — pages, data, APIs |
+
+---
+
+## License
+
+All production dependencies are **Apache 2.0, MIT, or BSD** licensed.
+`sanskrit_parser` (GPLv3) is **not used** in this project. See [06-tech-stack.md](docs/architecture/06-tech-stack.md) for the full compatibility matrix.

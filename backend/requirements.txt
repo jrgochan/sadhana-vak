@@ -1,7 +1,27 @@
 fastapi>=0.110.0
 uvicorn>=0.29.0
 pydantic-settings>=2.2.1
+openai>=1.30.0
 aiortc>=1.8.0
-llama-cpp-python>=0.2.62
 onnxruntime>=1.17.1
-sanskrit_parser>=0.1.1
+numpy>=1.26.0
+
+# STT — Sherpa-ONNX wraps Moonshine-Small (Apache 2.0)
+# Install separately: pip install sherpa-onnx
+# (wheel selection depends on platform; see https://k2-fsa.github.io/sherpa/onnx/)
+
+# TTS — Piper VITS (MIT)
+# Install separately: pip install piper-tts
+# (requires espeak-ng system dependency; see https://github.com/rhasspy/piper)
+
+# Grammar / Morphological analysis — CLTK (Apache 2.0)
+# Replaces sanskrit_parser (GPLv3 — MUST NOT be shipped in production)
+cltk>=1.1.0
+
+# Transliteration — IAST ↔ Devanāgarī ↔ SLP1 etc. (MIT)
+indic-transliteration>=2.3.65
+
+# LLM via Ollama (Qwen3-14B) — no Python package needed for llama-cpp-python
+# when using Ollama; install Ollama separately: https://ollama.com
+# For direct llama.cpp inference (optional advanced path):
+# pip install llama-cpp-python --extra-index-url https://jllllll.github.io/llama-cpp-python-cuBLAS-wheels/AVX2/metal
